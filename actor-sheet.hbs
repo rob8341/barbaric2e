@@ -1,0 +1,297 @@
+<form class="barbaric2e sheet actor">
+  {{!-- Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img"/>
+    <div class="header-fields">
+      <h1><input type="text" name="name" value="{{actor.name}}" placeholder="Name"/></h1>
+      
+      {{!-- Archetype --}}
+      <div class="archetype-section">
+        <label class="archetype-label">Archetype</label>
+        {{#if archetype}}
+          <div class="item-row" data-item-id="{{archetype.id}}">
+            <img src="{{archetype.img}}" class="item-icon archetype-icon"/>
+            <span class="item-name">{{archetype.name}}</span>
+            <div class="item-controls">
+              <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
+              <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        {{else}}
+          <button type="button" class="item-create compact" data-type="archetype">+</button>
+        {{/if}}
+      </div>
+
+      {{!-- Rank & XP --}}
+      <div class="rank-xp-row">
+        <select name="system.rank" class="rank-select">
+          <option value="Experienced" {{#if (eq system.rank "Experienced")}}selected{{/if}}>Experienced</option>
+          <option value="Expert" {{#if (eq system.rank "Expert")}}selected{{/if}}>Expert</option>
+          <option value="Master" {{#if (eq system.rank "Master")}}selected{{/if}}>Master</option>
+          <option value="Grandmaster" {{#if (eq system.rank "Grandmaster")}}selected{{/if}}>Grandmaster</option>
+          <option value="Legend" {{#if (eq system.rank "Legend")}}selected{{/if}}>Legend</option>
+        </select>
+        <div class="xp-group">
+          <label>XP</label>
+          <input type="number" name="system.xp" value="{{system.xp}}" class="xp-input"/>
+          <span>/ 5</span>
+        </div>
+        <div class="wounds-group">
+          <label>Wounds</label>
+          <input type="text" name="system.wounds" value="{{system.wounds}}" class="wounds-input" maxlength="3"/>
+          <button type="button" class="roll-triage compact" title="Triage Roll"><i class="fas fa-medkit"></i></button>
+        </div>
+        <div class="fatigue-group">
+          <label>Fatigue</label>
+          <input type="number" name="system.fatigue" value="{{system.fatigue}}" class="fatigue-input"/>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Tabs --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="stats"><i class="fas fa-chart-bar"></i> Main</a>
+    <a class="item" data-tab="equipment"><i class="fas fa-shield-alt"></i> Equipment</a>
+    <a class="item" data-tab="sorcery"><i class="fas fa-magic"></i> Sorcery</a>
+    <a class="item" data-tab="bio"><i class="fas fa-scroll"></i> Bio</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    
+    {{!-- Stats Tab --}}
+    <div class="tab" data-group="primary" data-tab="stats">
+      {{!-- Core Stats --}}
+      <div class="stats-grid">
+        <div class="stat-box">
+          <label>Stamina</label>
+          <div class="stat-value">
+            <input type="number" name="system.stamina.value" value="{{system.stamina.value}}"/>
+            <span>/</span>
+            <input type="number" name="system.stamina.max" value="{{system.stamina.max}}"/>
+          </div>
+        </div>
+        <div class="stat-box">
+          <label>Defense</label>
+          <input type="number" name="system.defense" value="{{system.defense}}"/>
+        </div>
+        <div class="stat-box">
+          <label>Armor</label>
+          <input type="number" name="system.armor" value="{{system.armor}}"/>
+        </div>
+        <div class="stat-box">
+          <label>Hero Points</label>
+          <input type="number" name="system.heroPoints" value="{{system.heroPoints}}"/>
+        </div>
+      </div>
+
+      {{!-- Skills --}}
+      <div class="skills-section">
+        <h3>Skills</h3>
+        <div class="skills-list">
+          {{#each system.skills}}
+          <div class="skill-row">
+            <button type="button" class="roll-skill" data-skill="{{@key}}" title="Roll {{@key}}">
+              <i class="fas {{lookup ../skillIcons @key}}"></i>
+            </button>
+            <span class="skill-name">{{capitalize @key}}</span>
+            <input type="number" name="system.skills.{{@key}}" value="{{this}}"/>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+
+      {{!-- Equipped Items --}}
+      <div class="equipped-section">
+        <h3>Equipped Items</h3>
+        <div class="equipped-list">
+          {{#each equippedItems}}
+          <div class="item-row" data-item-id="{{this.id}}">
+            <img src="{{this.img}}" class="item-icon"/>
+            <span class="item-name">{{this.name}}</span>
+            {{#if (eq this.type "weapon")}}
+            <span class="item-detail">{{this.system.damage}}</span>
+            <span class="item-detail">{{this.system.type}}</span>
+            <span class="item-detail">{{this.system.hands}}</span>
+            {{#if this.system.range}}<span class="item-detail">{{this.system.range}}</span>{{/if}}
+            {{/if}}
+            {{#if (eq this.type "armor")}}
+            <span class="item-detail">Prot: {{this.system.protection}}</span>
+            {{/if}}
+            <div class="item-controls">
+              {{#if (eq this.type "weapon")}}
+              <button type="button" class="roll-damage" data-item-id="{{this.id}}" title="Roll Damage"><i class="fas fa-sword"></i></button>
+              {{/if}}
+              <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
+            </div>
+          </div>
+          {{else}}
+          <p class="hint">No equipped items</p>
+          {{/each}}
+        </div>
+      </div>
+
+      {{!-- Combat Moves --}}
+      <div class="combat-moves-section">
+        <h3>Combat Moves</h3>
+        {{#each combatMoves}}
+        <div class="move-level">
+          <div class="section-header">
+            <h4>Level {{@key}}</h4>
+            <button type="button" class="item-create compact" data-type="combatMove" data-level="{{@key}}" title="Add Move">+</button>
+          </div>
+          <div class="item-list">
+            {{#each this}}
+            <div class="item-row" data-item-id="{{this.id}}">
+              <img src="{{this.img}}" class="item-icon"/>
+              <span class="item-name">{{this.name}}</span>
+              <div class="item-controls">
+                <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
+                <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    {{!-- Equipment Tab --}}
+    <div class="tab" data-group="primary" data-tab="equipment">
+      {{!-- Coins --}}
+      <div class="coins-row">
+        <span class="coin-label gold">Gold</span>
+        <input type="number" name="system.coins.gold" value="{{system.coins.gold}}" min="0" class="coin-input gold"/>
+        <span class="coin-label silver">Silver</span>
+        <input type="number" name="system.coins.silver" value="{{system.coins.silver}}" min="0" class="coin-input silver"/>
+        <span class="coin-label copper">Copper</span>
+        <input type="number" name="system.coins.copper" value="{{system.coins.copper}}" min="0" class="coin-input copper"/>
+      </div>
+
+      {{!-- Weapons --}}
+      <div class="item-section">
+        <div class="section-header">
+          <h3>Weapons</h3>
+          <button type="button" class="item-create compact" data-type="weapon" title="Add Weapon">+</button>
+        </div>
+        <div class="item-list">
+          {{#each weapons}}
+          <div class="item-row" data-item-id="{{this.id}}">
+            <img src="{{this.img}}" class="item-icon"/>
+            <span class="item-name">{{this.name}}</span>
+            <span class="item-detail">{{this.system.damage}}</span>
+            <span class="item-detail">{{this.system.type}}</span>
+            <span class="item-detail">{{this.system.hands}}</span>
+            {{#if this.system.range}}<span class="item-detail">{{this.system.range}}</span>{{/if}}
+            <div class="item-controls">
+              <button type="button" class="item-equip" title="{{#if this.system.equipped}}Unequip{{else}}Equip{{/if}}">
+                <i class="fas fa-shield-alt {{#if this.system.equipped}}equipped{{/if}}"></i>
+              </button>
+              <button type="button" class="roll-damage" data-item-id="{{this.id}}" title="Roll Damage"><i class="fas fa-sword"></i></button>
+              <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
+              <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+
+      {{!-- Armor --}}
+      <div class="item-section">
+        <div class="section-header">
+          <h3>Armor</h3>
+          <button type="button" class="item-create compact" data-type="armor" title="Add Armor">+</button>
+        </div>
+        <div class="item-list">
+          {{#each armors}}
+          <div class="item-row" data-item-id="{{this.id}}">
+            <img src="{{this.img}}" class="item-icon"/>
+            <span class="item-name">{{this.name}}</span>
+            <span class="item-detail">Prot: {{this.system.protection}}</span>
+            <div class="item-controls">
+              <button type="button" class="item-equip" title="{{#if this.system.equipped}}Unequip{{else}}Equip{{/if}}">
+                <i class="fas fa-shield-alt {{#if this.system.equipped}}equipped{{/if}}"></i>
+              </button>
+              <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
+              <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+
+      {{!-- General Equipment --}}
+      <div class="item-section">
+        <div class="section-header">
+          <h3>General Equipment</h3>
+          <button type="button" class="item-create compact" data-type="equipment" title="Add Equipment">+</button>
+        </div>
+        <div class="item-list">
+          {{#each equipment}}
+          <div class="item-row" data-item-id="{{this.id}}">
+            <img src="{{this.img}}" class="item-icon"/>
+            <span class="item-name">{{this.name}}</span>
+            <span class="item-detail">x{{this.system.quantity}}</span>
+            <div class="item-controls">
+              <button type="button" class="item-equip" title="{{#if this.system.equipped}}Unequip{{else}}Equip{{/if}}">
+                <i class="fas fa-shield-alt {{#if this.system.equipped}}equipped{{/if}}"></i>
+              </button>
+              <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
+              <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    {{!-- Sorcery Tab --}}
+    <div class="tab" data-group="primary" data-tab="sorcery">
+      {{!-- Spells --}}
+      <div class="item-section">
+        <div class="section-header">
+          <h3>Spells</h3>
+          <button type="button" class="item-create compact" data-type="spell" title="Add Spell">+</button>
+        </div>
+        <div class="item-list">
+          {{#each spells}}
+          <div class="item-row" data-item-id="{{this.id}}">
+            <img src="{{this.img}}" class="item-icon"/>
+            <span class="item-name">{{this.name}}</span>
+            <span class="item-detail">{{this.system.range}}</span>
+            <div class="item-controls">
+              <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
+              <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    {{!-- Bio Tab --}}
+    <div class="tab" data-group="primary" data-tab="bio">
+      <div class="bio-section">
+        <div class="bio-field">
+          <label>Appearance</label>
+          <textarea name="system.bio.appearance" placeholder="Describe your character's appearance...">{{system.bio.appearance}}</textarea>
+        </div>
+        <div class="bio-field">
+          <label>Personality</label>
+          <textarea name="system.bio.personality" placeholder="Describe your character's personality...">{{system.bio.personality}}</textarea>
+        </div>
+        <div class="bio-field">
+          <label>Motivation</label>
+          <textarea name="system.bio.motivation" placeholder="What drives your character?">{{system.bio.motivation}}</textarea>
+        </div>
+        <div class="bio-field">
+          <label>Notes</label>
+          <textarea name="system.bio.notes" placeholder="Additional notes...">{{system.bio.notes}}</textarea>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</form>

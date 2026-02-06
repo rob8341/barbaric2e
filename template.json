@@ -1,0 +1,87 @@
+{
+  "Actor": {
+    "types": ["character", "npc"],
+    "character": {
+      "rank": "Experienced",
+      "xp": 0,
+      "wounds": "",
+      "fatigue": 0,
+      "stamina": { "value": 10, "max": 10 },
+      "defense": 8,
+      "armor": 0,
+      "heroPoints": 2,
+      "coins": {
+        "gold": 0,
+        "silver": 0,
+        "copper": 0
+      },
+      "skills": {
+        "combat": 0,
+        "craft": 0,
+        "lore": 0,
+        "physical": 0,
+        "social": 0,
+        "stealth": 0
+      },
+      "bio": {
+        "appearance": "",
+        "personality": "",
+        "motivation": "",
+        "notes": ""
+      }
+    },
+    "npc": {
+      "description": "",
+      "stamina": { "value": 10, "max": 10 },
+      "defense": 8,
+      "movement": "",
+      "armor": 0,
+      "skills": {
+        "combat": 0,
+        "craft": 0,
+        "lore": 0,
+        "physical": 0,
+        "social": 0,
+        "stealth": 0
+      }
+    }
+  },
+  "Item": {
+    "types": ["archetype", "weapon", "armor", "equipment", "combatMove", "spell", "npcAbility"],
+    "archetype": {
+      "description": ""
+    },
+    "weapon": {
+      "description": "",
+      "damage": "",
+      "type": "Slashing",
+      "hands": "1H",
+      "range": "",
+      "cost": "",
+      "equipped": false
+    },
+    "armor": {
+      "description": "",
+      "protection": 0,
+      "cost": "",
+      "equipped": false
+    },
+    "equipment": {
+      "description": "",
+      "quantity": 1,
+      "cost": "",
+      "equipped": false
+    },
+    "combatMove": {
+      "description": "",
+      "level": "2"
+    },
+    "spell": {
+      "description": "",
+      "range": ""
+    },
+    "npcAbility": {
+      "description": ""
+    }
+  }
+}

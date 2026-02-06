@@ -1,0 +1,986 @@
+/* Barbaric! 2e - Sword & Sorcery Theme */
+
+/* Color Variables */
+.barbaric2e {
+  --primary-bg: #1a1410;
+  --secondary-bg: #2a2018;
+  --tertiary-bg: #3d3025;
+  --gold: #c9a227;
+  --gold-light: #e8c547;
+  --blood: #8b1a1a;
+  --blood-dark: #5c1010;
+  --bronze: #b87333;
+  --text: #e8dcc4;
+  --text-muted: #a89880;
+  --border: #5a4a3a;
+  --border-light: #7a6a5a;
+}
+
+/* Base Sheet */
+.barbaric2e.sheet {
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+  color: var(--text);
+  font-family: "Signika", sans-serif;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+}
+
+.barbaric2e.sheet form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header */
+.barbaric2e .sheet-header {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: var(--secondary-bg);
+  border-bottom: 2px solid var(--gold);
+}
+
+.barbaric2e .profile-img {
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.barbaric2e .header-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.barbaric2e .header-fields h1 {
+  margin: 0;
+  border: none;
+}
+
+.barbaric2e .header-fields h1 input {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--gold-light);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+
+/* Archetype Section */
+.barbaric2e .archetype-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 5px;
+}
+
+.barbaric2e .archetype-label {
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.barbaric2e .archetype-row {
+  /* Uses .item-row styling, no extra styles needed */
+}
+
+.barbaric2e .archetype-section .compact {
+  width: 24px;
+  height: 24px;
+}
+
+/* Rank & XP Row */
+.barbaric2e .rank-xp-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.barbaric2e .rank-select {
+  width: 110px;
+  background: var(--secondary-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 4px;
+  border-radius: 3px;
+}
+
+/* All dropboxes/selects */
+.barbaric2e select,
+.barbaric2e .form-group select {
+  background: var(--tertiary-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  border-radius: 3px;
+  height: 28px;
+  line-height: 1;
+}
+
+.barbaric2e select option {
+  background: var(--tertiary-bg);
+  color: var(--text);
+}
+
+.barbaric2e .xp-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.barbaric2e .xp-group label {
+  color: var(--text-muted);
+}
+
+.barbaric2e .xp-input {
+  width: 36px;
+  text-align: center;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 3px;
+  padding: 4px;
+}
+
+.barbaric2e .xp-group span {
+  color: var(--text-muted);
+}
+
+/* Wounds Group */
+.barbaric2e .wounds-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.barbaric2e .wounds-group label {
+  color: var(--text-muted);
+}
+
+.barbaric2e .wounds-input {
+  width: 36px;
+  text-align: center;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 3px;
+  padding: 4px;
+}
+
+.barbaric2e .wounds-group .roll-triage {
+  background: var(--blood);
+  border: 1px solid var(--blood-dark);
+  color: var(--text);
+}
+
+.barbaric2e .wounds-group .roll-triage:hover {
+  background: var(--blood-dark);
+  box-shadow: 0 0 6px var(--blood);
+}
+
+/* Fatigue Group */
+.barbaric2e .fatigue-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.barbaric2e .fatigue-group label {
+  color: var(--text-muted);
+}
+
+.barbaric2e .fatigue-input {
+  width: 36px;
+  text-align: center;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: #dd4444;
+  border-radius: 3px;
+  padding: 4px;
+}
+
+/* Tabs */
+.barbaric2e .sheet-tabs {
+  display: flex;
+  background: var(--tertiary-bg);
+  border-bottom: 2px solid var(--border);
+}
+
+.barbaric2e .sheet-tabs .item {
+  flex: 1;
+  padding: 8px;
+  text-align: center;
+  color: var(--text-muted);
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.barbaric2e .sheet-tabs .item:hover {
+  color: var(--gold);
+  background: rgba(201, 162, 39, 0.1);
+}
+
+.barbaric2e .sheet-tabs .item.active {
+  color: var(--gold-light);
+  border-bottom-color: var(--blood);
+  background: rgba(139, 26, 26, 0.2);
+}
+
+/* Sheet Body */
+.barbaric2e .sheet-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.barbaric2e .tab {
+  display: none;
+}
+
+.barbaric2e .tab.active {
+  display: block;
+}
+
+/* Stats Grid */
+.barbaric2e .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.barbaric2e .stat-box {
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+}
+
+.barbaric2e .stat-box label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.barbaric2e .stat-box input {
+  width: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--gold);
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.barbaric2e .stat-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.barbaric2e .stat-value span {
+  color: var(--text-muted);
+}
+
+/* Skills Section */
+.barbaric2e .skills-section,
+.barbaric2e .equipped-section,
+.barbaric2e .combat-moves-section {
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.barbaric2e h3 {
+  margin: 0 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--border);
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.barbaric2e .skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.barbaric2e .skill-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--secondary-bg);
+  padding: 5px 8px;
+  border-radius: 3px;
+}
+
+.barbaric2e .roll-skill {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: var(--blood);
+  border: 1px solid var(--blood-dark);
+  color: var(--text);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.barbaric2e .roll-skill:hover {
+  background: var(--blood-dark);
+  box-shadow: 0 0 8px var(--blood);
+}
+
+/* Removed separate advantage button - now combined in roll dialog */
+
+.barbaric2e .skill-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.barbaric2e .skill-row input {
+  width: 36px;
+  text-align: center;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  border-radius: 3px;
+}
+
+/* Equipped Items */
+.barbaric2e .equipped-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.barbaric2e .hint {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 12px;
+  margin: 0;
+}
+
+/* Coins Row */
+.barbaric2e .coins-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: var(--tertiary-bg);
+  border-radius: 4px;
+}
+
+.barbaric2e .coin-label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.barbaric2e .coin-label.gold {
+  color: #ffd700;
+}
+
+.barbaric2e .coin-label.silver {
+  color: #c0c0c0;
+}
+
+.barbaric2e .coin-label.copper {
+  color: #b87333;
+}
+
+.barbaric2e .coin-input {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 3px;
+  padding: 4px;
+}
+
+.barbaric2e .coin-input.gold {
+  width: 80px;
+}
+
+.barbaric2e .coin-input.silver {
+  width: 50px;
+}
+
+.barbaric2e .coin-input.copper {
+  width: 50px;
+}
+
+/* Item Section */
+.barbaric2e .item-section {
+  margin-bottom: 15px;
+}
+
+.barbaric2e .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.barbaric2e .section-header h3,
+.barbaric2e .section-header h4 {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.barbaric2e h4 {
+  color: var(--bronze);
+  font-size: 12px;
+}
+
+.barbaric2e .move-level {
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+/* Item Row */
+.barbaric2e .item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.barbaric2e .item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--secondary-bg);
+  padding: 5px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+.barbaric2e .item-row:hover {
+  border-color: var(--gold);
+}
+
+.barbaric2e .item-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.barbaric2e .item-name {
+  flex: 1;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.barbaric2e .item-name:hover {
+  color: var(--gold);
+}
+
+.barbaric2e .item-detail {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.barbaric2e .item-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.barbaric2e .item-controls button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.barbaric2e .item-controls button:hover {
+  background: var(--gold);
+  color: var(--primary-bg);
+}
+
+.barbaric2e .item-delete:hover {
+  background: var(--blood) !important;
+  color: var(--text) !important;
+}
+
+/* Roll damage button */
+.barbaric2e .roll-damage:hover {
+  background: var(--blood) !important;
+  color: var(--text) !important;
+}
+
+/* Equip button states */
+.barbaric2e .item-equip .fa-shield-alt {
+  opacity: 0.4;
+}
+
+.barbaric2e .item-equip .fa-shield-alt.equipped {
+  opacity: 1;
+  color: var(--gold);
+}
+
+/* Compact Add Button */
+.barbaric2e .compact {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: bold;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barbaric2e .compact:hover {
+  background: var(--gold);
+  color: var(--primary-bg);
+}
+
+/* Bio Section */
+.barbaric2e .bio-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.barbaric2e .bio-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.barbaric2e .bio-field label {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.barbaric2e .bio-field textarea {
+  min-height: 80px;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 8px;
+  resize: both;
+}
+
+/* Item Sheet */
+.barbaric2e.item .sheet-header {
+  padding: 10px;
+}
+
+.barbaric2e.item .item-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.barbaric2e.item .header-fields h1 input {
+  font-size: 18px;
+}
+
+.barbaric2e.item .item-type {
+  margin: 0;
+  color: var(--bronze);
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.barbaric2e.item .sheet-body {
+  padding: 10px;
+}
+
+.barbaric2e .form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.barbaric2e .form-group label {
+  width: 80px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.barbaric2e .form-group input,
+.barbaric2e .form-group select {
+  flex: 1;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 8px;
+  border-radius: 3px;
+}
+
+.barbaric2e .form-group input:focus,
+.barbaric2e .form-group select:focus,
+.barbaric2e .form-group textarea:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+/* Combat Move Level Select */
+.barbaric2e .level-select {
+  width: 40px;
+  text-align: center;
+  text-align-last: center;
+  padding: 4px 2px;
+  line-height: 1;
+}
+
+/* Weapon Type/Hands Select */
+.barbaric2e .type-select {
+  width: 100px;
+}
+
+.barbaric2e .hands-select {
+  width: 60px;
+}
+
+/* All item row selects - vertical alignment fix */
+.barbaric2e .item-row select,
+.barbaric2e .item-detail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Archetype Icon - force square */
+.barbaric2e .archetype-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.barbaric2e .description-group {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.barbaric2e .description-group label {
+  width: auto;
+  margin-bottom: 5px;
+}
+
+.barbaric2e .description-group textarea {
+  min-height: 100px;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px;
+  border-radius: 4px;
+  resize: both;
+}
+
+/* Chat Message - Sword & Sorcery Theme */
+.barbaric2e-chat {
+  background: linear-gradient(135deg, #1a1410 0%, #2a2018 100%);
+  border: 1px solid #c9a227;
+  border-radius: 6px;
+  padding: 10px;
+  color: #e8dcc4;
+  font-family: "Signika", sans-serif;
+}
+
+.barbaric2e-chat .chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #5a4a3a;
+  margin-bottom: 8px;
+}
+
+.barbaric2e-chat .chat-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border: 2px solid #c9a227;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.barbaric2e-chat .chat-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #e8c547;
+  margin: 0;
+}
+
+.barbaric2e-chat .chat-subtitle {
+  font-size: 11px;
+  color: #b87333;
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.barbaric2e-chat .chat-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.barbaric2e-chat .chat-detail {
+  display: flex;
+  gap: 8px;
+}
+
+.barbaric2e-chat .chat-detail-label {
+  color: #a89880;
+  min-width: 70px;
+}
+
+.barbaric2e-chat .chat-detail-value {
+  color: #e8dcc4;
+}
+
+.barbaric2e-chat .chat-description {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #5a4a3a;
+  font-size: 12px;
+  color: #a89880;
+  font-style: italic;
+}
+
+/* Roll Messages */
+.barbaric2e-roll {
+  background: linear-gradient(135deg, #1a1410 0%, #2a2018 100%);
+  border: 1px solid #c9a227;
+  border-radius: 6px;
+  padding: 10px;
+  color: #e8dcc4;
+  font-family: "Signika", sans-serif;
+}
+
+.barbaric2e-roll .roll-header {
+  font-size: 14px;
+  font-weight: bold;
+  color: #e8c547;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #5a4a3a;
+}
+
+.barbaric2e-roll .dice-roll {
+  margin: 8px 0;
+}
+
+/* Critical Success/Failure */
+.critical-success {
+  background: linear-gradient(135deg, #1a2a1a 0%, #2a3a2a 100%);
+  border: 1px solid #22dd22;
+  color: #44ff44;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px;
+  margin-top: 8px;
+  border-radius: 4px;
+  text-shadow: 0 0 8px #22dd22;
+}
+
+.critical-failure {
+  background: linear-gradient(135deg, #2a1a1a 0%, #3a2020 100%);
+  border: 1px solid #dd2222;
+  color: #ff4444;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px;
+  margin-top: 8px;
+  border-radius: 4px;
+  text-shadow: 0 0 8px #dd2222;
+}
+
+/* Dice Roll Results in Chat - Sword & Sorcery Theme */
+.chat-message .message-content .dice-roll {
+  background: linear-gradient(135deg, #1a1410 0%, #2a2018 100%);
+  border: 1px solid #c9a227;
+  border-radius: 6px;
+  padding: 8px;
+  margin: 4px 0;
+}
+
+.chat-message .message-content .dice-roll .dice-result {
+  background: transparent;
+}
+
+.chat-message .message-content .dice-roll .dice-formula {
+  background: #3d3025;
+  border: 1px solid #5a4a3a;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #e8c547;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.chat-message .message-content .dice-roll .dice-tooltip {
+  background: #2a2018;
+  border: 1px solid #5a4a3a;
+  color: #e8dcc4;
+}
+
+.chat-message .message-content .dice-roll .dice-total {
+  background: linear-gradient(135deg, #8b1a1a 0%, #5c1010 100%);
+  border: 2px solid #c9a227;
+  color: #e8c547;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.chat-message .message-content .dice-roll .part-formula {
+  color: #b87333;
+}
+
+.chat-message .message-content .dice-roll .part-total {
+  color: #e8c547;
+  font-weight: bold;
+}
+
+.chat-message .message-content .dice-roll .dice-tooltip .dice {
+  background: #3d3025;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+.chat-message .message-content .dice-roll .dice-tooltip .dice-rolls {
+  display: flex;
+  gap: 4px;
+}
+
+.chat-message .message-content .dice-roll .dice-tooltip .roll {
+  background: #5a4a3a;
+  border: 1px solid #7a6a5a;
+  color: #e8dcc4;
+  min-width: 24px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.chat-message .message-content .dice-roll .dice-tooltip .roll.max {
+  background: linear-gradient(135deg, #1a2a1a 0%, #2a3a2a 100%);
+  border-color: #22dd22;
+  color: #44ff44;
+  box-shadow: 0 0 6px #22dd22;
+}
+
+.chat-message .message-content .dice-roll .dice-tooltip .roll.min {
+  background: linear-gradient(135deg, #2a1a1a 0%, #3a2020 100%);
+  border-color: #dd2222;
+  color: #ff4444;
+  box-shadow: 0 0 6px #dd2222;
+}
+
+.chat-message .message-content .dice-roll .dice-tooltip .roll.discarded {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+/* NPC Sheet */
+.barbaric2e.npc .npc-description {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 15px;
+  background: var(--secondary-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.barbaric2e.npc .npc-description label {
+  color: var(--gold);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.barbaric2e.npc .npc-description textarea {
+  width: 100%;
+  min-height: 60px;
+  background: var(--tertiary-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 8px;
+  resize: vertical;
+}
+
+/* Scrollbar */
+.barbaric2e ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.barbaric2e ::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+
+.barbaric2e ::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.barbaric2e ::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}

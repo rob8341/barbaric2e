@@ -1,0 +1,34 @@
+{
+  "id": "barbaric2e",
+  "title": "Barbaric! 2e",
+  "description": "A 2d6-based sword and sorcery tabletop RPG system for Foundry VTT",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "rob8341",
+      "url": "https://github.com/rob8341",
+      "discord": "your_discord_handle"
+    }
+  ],
+  "url": "https://github.com/rob8341/barbaric2e",
+  "manifest": "https://github.com/rob8341/barbaric2e/releases/latest/download/system.json",
+  "download": "https://github.com/rob8341/barbaric2e/releases/latest/download/barbaric2e.zip",
+  "readme": "https://github.com/rob8341/barbaric2e/blob/main/README.md",
+  "bugs": "https://github.com/rob8341/barbaric2e/issues",
+  "changelog": "https://github.com/rob8341/barbaric2e/blob/main/CHANGELOG.md",
+  "license": "MIT",
+  "esmodules": ["barbaric2e.mjs"],
+  "styles": ["barbaric2e.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "socket": false
+}

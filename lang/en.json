@@ -1,0 +1,22 @@
+{
+  "BARBARIC2E.ActorTypeCharacter": "Character",
+  "BARBARIC2E.ActorTypeNpc": "NPC",
+  "BARBARIC2E.ItemTypeWeapon": "Weapon",
+  "BARBARIC2E.ItemTypeArmor": "Armor",
+  "BARBARIC2E.ItemTypeEquipment": "Equipment",
+  "BARBARIC2E.ItemTypeCombatMove": "Combat Move",
+  "BARBARIC2E.ItemTypeSpell": "Spell",
+  "BARBARIC2E.ItemTypeArchetype": "Archetype",
+  "BARBARIC2E.ItemTypeNpcAbility": "NPC Ability",
+  "BARBARIC2E.SkillCombat": "Combat",
+  "BARBARIC2E.SkillCraft": "Craft",
+  "BARBARIC2E.SkillLore": "Lore",
+  "BARBARIC2E.SkillPhysical": "Physical",
+  "BARBARIC2E.SkillSocial": "Social",
+  "BARBARIC2E.SkillStealth": "Stealth",
+  "BARBARIC2E.RankExperienced": "Experienced",
+  "BARBARIC2E.RankExpert": "Expert",
+  "BARBARIC2E.RankMaster": "Master",
+  "BARBARIC2E.RankGrandmaster": "Grandmaster",
+  "BARBARIC2E.RankLegend": "Legend"
+}
