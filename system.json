@@ -15,8 +15,8 @@
     }
   ],
   "url": "https://github.com/rob8341/barbaric2e",
-  "manifest": "https://github.com/rob8341/barbaric2e/releases/latest/download/system.json",
-  "download": "https://github.com/rob8341/barbaric2e/releases/latest/download/barbaric2e.zip",
+  "manifest": "https://raw.githubusercontent.com/rob8341/barbaric2e/refs/heads/main/system.json",
+  "download": "https://github.com/rob8341/barbaric2e/releases/download/initial/barbaric2e.zip",
   "readme": "https://github.com/rob8341/barbaric2e/blob/main/README.md",
   "bugs": "https://github.com/rob8341/barbaric2e/issues",
   "changelog": "https://github.com/rob8341/barbaric2e/blob/main/CHANGELOG.md",

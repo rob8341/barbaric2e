@@ -41,7 +41,7 @@ A sword and sorcery 2d6-based tabletop RPG system for Foundry VTT v13.
 
 ### Manifest URL
 ```
-https://github.com/rob8341/barbaric2e/releases/latest/download/system.json
+https://github.com/YOUR_USERNAME/barbaric2e/releases/latest/download/system.json
 ```
 
 ## License
@@ -50,4 +50,6 @@ MIT License
 
 ## Credits
 
-Created for use with the Barbaric! 2e tabletop RPG.
+**Barbaric! 2e** is a tabletop RPG by **Omer Golan-Joel** from **[Stellagama Publishing](https://www.stellagama.com/)**.
+
+This Foundry VTT system implementation is unofficial and created for personal use with the game.
