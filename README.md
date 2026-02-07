@@ -50,6 +50,7 @@ MIT License
 
 ## Credits
 
-**Barbaric! 2e** is a tabletop RPG by **Omer Golan-Joel** from **[Stellagama Publishing](https://www.stellagama.com/)**.
+**Barbaric! 2e** is a tabletop RPG by **Omer Golan-Joel** from **[Stellagama Publishing](https://stellagamapublishing.co/)**.
 
 This Foundry VTT system implementation is unofficial and created for personal use with the game.
+Written with Claude Opus 4.5 AI
