@@ -41,7 +41,7 @@ A sword and sorcery 2d6-based tabletop RPG system for Foundry VTT v13.
 
 ### Manifest URL
 ```
-https://github.com/YOUR_USERNAME/barbaric2e/releases/latest/download/system.json
+https://raw.githubusercontent.com/rob8341/barbaric2e/refs/heads/main/system.json
 ```
 
 ## License
