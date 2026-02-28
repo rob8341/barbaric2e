@@ -54,6 +54,7 @@
     "weapon": {
       "description": "",
       "damage": "",
+      "attackBonus": 0,
       "type": "Slashing",
       "hands": "1H",
       "range": "",

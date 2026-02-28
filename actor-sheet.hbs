@@ -108,7 +108,7 @@
         <div class="equipped-list">
           {{#each equippedItems}}
           <div class="item-row" data-item-id="{{this.id}}">
-            <img src="{{this.img}}" class="item-icon"/>
+            <img src="{{this.img}}" class="item-icon{{#if (eq this.type 'weapon')}} weapon-icon roll-weapon{{/if}}" {{#if (eq this.type 'weapon')}}title="Roll Attack & Damage"{{/if}}/>
             <span class="item-name">{{this.name}}</span>
             {{#if (eq this.type "weapon")}}
             <span class="item-detail">{{this.system.damage}}</span>
@@ -121,6 +121,7 @@
             {{/if}}
             <div class="item-controls">
               {{#if (eq this.type "weapon")}}
+              <button type="button" class="roll-attack" data-item-id="{{this.id}}" title="Roll Attack"><i class="fas fa-crosshairs"></i></button>
               <button type="button" class="roll-damage" data-item-id="{{this.id}}" title="Roll Damage"><i class="fas fa-sword"></i></button>
               {{/if}}
               <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
@@ -179,7 +180,7 @@
         <div class="item-list">
           {{#each weapons}}
           <div class="item-row" data-item-id="{{this.id}}">
-            <img src="{{this.img}}" class="item-icon"/>
+            <img src="{{this.img}}" class="item-icon weapon-icon roll-weapon" title="Roll Attack & Damage"/>
             <span class="item-name">{{this.name}}</span>
             <span class="item-detail">{{this.system.damage}}</span>
             <span class="item-detail">{{this.system.type}}</span>
@@ -189,6 +190,7 @@
               <button type="button" class="item-equip" title="{{#if this.system.equipped}}Unequip{{else}}Equip{{/if}}">
                 <i class="fas fa-shield-alt {{#if this.system.equipped}}equipped{{/if}}"></i>
               </button>
+              <button type="button" class="roll-attack" data-item-id="{{this.id}}" title="Roll Attack"><i class="fas fa-crosshairs"></i></button>
               <button type="button" class="roll-damage" data-item-id="{{this.id}}" title="Roll Damage"><i class="fas fa-sword"></i></button>
               <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
               <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>

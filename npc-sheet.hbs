@@ -62,14 +62,15 @@
       <div class="item-list">
         {{#each weapons}}
         <div class="item-row" data-item-id="{{this.id}}">
-          <img src="{{this.img}}" class="item-icon"/>
+          <img src="{{this.img}}" class="item-icon weapon-icon roll-weapon" title="Roll Attack & Damage"/>
           <span class="item-name">{{this.name}}</span>
           <span class="item-detail">{{this.system.damage}}</span>
           <span class="item-detail">{{this.system.type}}</span>
           <span class="item-detail">{{this.system.hands}}</span>
           {{#if this.system.range}}<span class="item-detail">{{this.system.range}}</span>{{/if}}
           <div class="item-controls">
-            <button type="button" class="roll-damage" title="Roll Damage"><i class="fas fa-sword"></i></button>
+            <button type="button" class="roll-attack" data-item-id="{{this.id}}" title="Roll Attack"><i class="fas fa-crosshairs"></i></button>
+            <button type="button" class="roll-damage" data-item-id="{{this.id}}" title="Roll Damage"><i class="fas fa-sword"></i></button>
             <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
             <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>
           </div>

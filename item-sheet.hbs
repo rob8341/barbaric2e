@@ -23,8 +23,12 @@
       <input type="text" name="system.damage" value="{{system.damage}}" placeholder="e.g., 1d6+2"/>
     </div>
     <div class="form-group">
+      <label>Attack Bonus</label>
+      <input type="number" name="system.attackBonus" value="{{system.attackBonus}}" placeholder="0"/>
+    </div>
+    <div class="form-group">
       <label>Type</label>
-      <select name="system.type" class="type-select">
+      <select name="system.type">
         <option value="Crushing" {{#if (eq system.type "Crushing")}}selected{{/if}}>Crushing</option>
         <option value="Piercing" {{#if (eq system.type "Piercing")}}selected{{/if}}>Piercing</option>
         <option value="Slashing" {{#if (eq system.type "Slashing")}}selected{{/if}}>Slashing</option>
@@ -32,7 +36,7 @@
     </div>
     <div class="form-group">
       <label>Hands</label>
-      <select name="system.hands" class="hands-select">
+      <select name="system.hands">
         <option value="1H" {{#if (eq system.hands "1H")}}selected{{/if}}>1H</option>
         <option value="2H" {{#if (eq system.hands "2H")}}selected{{/if}}>2H</option>
       </select>
