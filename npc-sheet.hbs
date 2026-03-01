@@ -119,5 +119,26 @@
         {{/each}}
       </div>
     </div>
+
+    {{!-- Spells --}}
+    <div class="item-section">
+      <div class="section-header">
+        <h3>Spells</h3>
+        <button type="button" class="item-create compact" data-type="spell" title="Add Spell">+</button>
+      </div>
+      <div class="item-list">
+        {{#each spells}}
+        <div class="item-row" data-item-id="{{this.id}}">
+          <img src="{{this.img}}" class="item-icon"/>
+          <span class="item-name">{{this.name}}</span>
+          {{#if this.system.range}}<span class="item-detail">{{this.system.range}}</span>{{/if}}
+          <div class="item-controls">
+            <button type="button" class="item-chat" title="Send to Chat"><i class="fas fa-comment"></i></button>
+            <button type="button" class="item-delete" title="Delete"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
   </section>
 </form>

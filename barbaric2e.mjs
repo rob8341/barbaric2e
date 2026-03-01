@@ -1059,6 +1059,7 @@ class Barbaric2eNPCSheet extends ActorSheet {
     context.weapons = this.actor.items.filter(i => i.type === "weapon");
     context.armors = this.actor.items.filter(i => i.type === "armor");
     context.npcAbilities = this.actor.items.filter(i => i.type === "npcAbility");
+    context.spells = this.actor.items.filter(i => i.type === "spell");
     
     // Skill icons
     context.skillIcons = {
