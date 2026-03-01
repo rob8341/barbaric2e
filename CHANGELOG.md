@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.0] - Initial Release
+## [1.0.0] - Initial Release
 
 ### Character Sheet
 - 4-tab layout: Main, Equipment, Sorcery, Bio

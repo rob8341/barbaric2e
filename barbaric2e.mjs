@@ -609,7 +609,10 @@ class Barbaric2eActorSheet extends ActorSheet {
             const advantageText = advantage ? " (Advantage)" : "";
             const flavorContent = `
               <div class="barbaric2e-roll">
-                <div class="roll-header">${item.name} Attack${advantageText}</div>
+                <div class="roll-header">
+                  <img src="${item.img}" class="chat-item-icon" />
+                  <span>${item.name} Attack${advantageText}</span>
+                </div>
                 ${critMessage}
               </div>
             `;
@@ -641,9 +644,13 @@ class Barbaric2eActorSheet extends ActorSheet {
     const roll = new Roll(item.system.damage);
     await roll.evaluate();
     
+    const damageType = item.system.type ? ` (${item.system.type})` : "";
     const flavorContent = `
       <div class="barbaric2e-roll">
-        <div class="roll-header">${item.name} Damage</div>
+        <div class="roll-header">
+          <img src="${item.img}" class="chat-item-icon" />
+          <span>${item.name} Damage${damageType}</span>
+        </div>
       </div>
     `;
     roll.toMessage({
@@ -747,17 +754,19 @@ class Barbaric2eActorSheet extends ActorSheet {
                   }
                 }
                 
+                const damageType = item.system.type ? ` (${item.system.type})` : "";
                 damageSection = `
                   <div class="damage-section">
-                    <div class="roll-header" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #5a4a3a;">Damage</div>
+                    <div class="roll-label" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #5a4a3a;">Damage${damageType}</div>
                     <div class="critical-success"><strong>MAXIMUM DAMAGE: ${maxDamage}</strong></div>
                   </div>
                 `;
               } else {
                 const damageRollHtml = await damageRoll.render();
+                const damageType = item.system.type ? ` (${item.system.type})` : "";
                 damageSection = `
                   <div class="damage-section">
-                    <div class="roll-header" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #5a4a3a;">Damage</div>
+                    <div class="roll-label" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #5a4a3a;">Damage${damageType}</div>
                     ${damageRollHtml}
                   </div>
                 `;
@@ -785,7 +794,10 @@ class Barbaric2eActorSheet extends ActorSheet {
             // Create combined message content
             const messageContent = `
               <div class="barbaric2e-roll">
-                <div class="roll-header">${item.name} Attack${advantageText}</div>
+                <div class="roll-header">
+                  <img src="${item.img}" class="chat-item-icon" />
+                  <span>${item.name} Attack${advantageText}</span>
+                </div>
                 ${critMessage}
                 ${attackRollHtml}
                 ${damageSection}
@@ -1279,7 +1291,10 @@ class Barbaric2eNPCSheet extends ActorSheet {
             const advantageText = advantage ? " (Advantage)" : "";
             const flavorContent = `
               <div class="barbaric2e-roll">
-                <div class="roll-header">${item.name} Attack${advantageText}</div>
+                <div class="roll-header">
+                  <img src="${item.img}" class="chat-item-icon" />
+                  <span>${item.name} Attack${advantageText}</span>
+                </div>
                 ${critMessage}
               </div>
             `;
@@ -1311,9 +1326,13 @@ class Barbaric2eNPCSheet extends ActorSheet {
     const roll = new Roll(item.system.damage);
     await roll.evaluate();
     
+    const damageType = item.system.type ? ` (${item.system.type})` : "";
     const flavorContent = `
       <div class="barbaric2e-roll">
-        <div class="roll-header">${item.name} Damage</div>
+        <div class="roll-header">
+          <img src="${item.img}" class="chat-item-icon" />
+          <span>${item.name} Damage${damageType}</span>
+        </div>
       </div>
     `;
     roll.toMessage({
@@ -1415,17 +1434,19 @@ class Barbaric2eNPCSheet extends ActorSheet {
                   }
                 }
                 
+                const damageType = item.system.type ? ` (${item.system.type})` : "";
                 damageSection = `
                   <div class="damage-section">
-                    <div class="roll-header" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #5a4a3a;">Damage</div>
+                    <div class="roll-label" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #5a4a3a;">Damage${damageType}</div>
                     <div class="critical-success"><strong>MAXIMUM DAMAGE: ${maxDamage}</strong></div>
                   </div>
                 `;
               } else {
                 const damageRollHtml = await damageRoll.render();
+                const damageType = item.system.type ? ` (${item.system.type})` : "";
                 damageSection = `
                   <div class="damage-section">
-                    <div class="roll-header" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #5a4a3a;">Damage</div>
+                    <div class="roll-label" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #5a4a3a;">Damage${damageType}</div>
                     ${damageRollHtml}
                   </div>
                 `;
@@ -1453,7 +1474,10 @@ class Barbaric2eNPCSheet extends ActorSheet {
             // Create combined message content
             const messageContent = `
               <div class="barbaric2e-roll">
-                <div class="roll-header">${item.name} Attack${advantageText}</div>
+                <div class="roll-header">
+                  <img src="${item.img}" class="chat-item-icon" />
+                  <span>${item.name} Attack${advantageText}</span>
+                </div>
                 ${critMessage}
                 ${attackRollHtml}
                 ${damageSection}

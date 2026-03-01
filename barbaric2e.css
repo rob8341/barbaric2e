@@ -870,6 +870,25 @@
   margin-bottom: 8px;
   padding-bottom: 6px;
   border-bottom: 1px solid #5a4a3a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.barbaric2e-roll .roll-header .chat-item-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  object-fit: cover;
+  border: 1px solid #5a4a3a;
+  border-radius: 4px;
+}
+
+.barbaric2e-roll .roll-label {
+  font-weight: bold;
+  color: #a89880;
+  font-size: 12px;
 }
 
 .barbaric2e-roll .dice-roll {
