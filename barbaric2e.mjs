@@ -1,8 +1,166 @@
-// Barbaric! 2e System for Foundry VTT v13
+// Barbaric! 2e System for Foundry VTT v14
 
-// Register Handlebars helpers
+// ===== Data Models =====
+
+class CharacterData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      rank: new fields.StringField({ initial: "Experienced" }),
+      xp: new fields.NumberField({ initial: 0, integer: true }),
+      wounds: new fields.StringField({ initial: "" }),
+      fatigue: new fields.NumberField({ initial: 0, integer: true }),
+      stamina: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 10, integer: true }),
+        max: new fields.NumberField({ initial: 10, integer: true })
+      }),
+      defense: new fields.NumberField({ initial: 8, integer: true }),
+      armor: new fields.NumberField({ initial: 0, integer: true }),
+      heroPoints: new fields.NumberField({ initial: 2, integer: true }),
+      coins: new fields.SchemaField({
+        gold: new fields.NumberField({ initial: 0, integer: true }),
+        silver: new fields.NumberField({ initial: 0, integer: true }),
+        copper: new fields.NumberField({ initial: 0, integer: true })
+      }),
+      skills: new fields.SchemaField({
+        combat: new fields.NumberField({ initial: 0, integer: true }),
+        craft: new fields.NumberField({ initial: 0, integer: true }),
+        lore: new fields.NumberField({ initial: 0, integer: true }),
+        physical: new fields.NumberField({ initial: 0, integer: true }),
+        social: new fields.NumberField({ initial: 0, integer: true }),
+        stealth: new fields.NumberField({ initial: 0, integer: true })
+      }),
+      bio: new fields.SchemaField({
+        appearance: new fields.StringField({ initial: "" }),
+        personality: new fields.StringField({ initial: "" }),
+        motivation: new fields.StringField({ initial: "" }),
+        notes: new fields.StringField({ initial: "" })
+      })
+    };
+  }
+}
+
+class NpcData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      description: new fields.StringField({ initial: "" }),
+      stamina: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 10, integer: true }),
+        max: new fields.NumberField({ initial: 10, integer: true })
+      }),
+      defense: new fields.NumberField({ initial: 8, integer: true }),
+      movement: new fields.StringField({ initial: "" }),
+      armor: new fields.NumberField({ initial: 0, integer: true }),
+      skills: new fields.SchemaField({
+        combat: new fields.NumberField({ initial: 0, integer: true }),
+        craft: new fields.NumberField({ initial: 0, integer: true }),
+        lore: new fields.NumberField({ initial: 0, integer: true }),
+        physical: new fields.NumberField({ initial: 0, integer: true }),
+        social: new fields.NumberField({ initial: 0, integer: true }),
+        stealth: new fields.NumberField({ initial: 0, integer: true })
+      })
+    };
+  }
+}
+
+class ArchetypeData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      description: new fields.StringField({ initial: "" })
+    };
+  }
+}
+
+class WeaponData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      description: new fields.StringField({ initial: "" }),
+      damage: new fields.StringField({ initial: "" }),
+      attackBonus: new fields.NumberField({ initial: 0, integer: true }),
+      type: new fields.StringField({ initial: "Slashing" }),
+      hands: new fields.StringField({ initial: "1H" }),
+      range: new fields.StringField({ initial: "" }),
+      cost: new fields.StringField({ initial: "" }),
+      equipped: new fields.BooleanField({ initial: false })
+    };
+  }
+}
+
+class ArmorData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      description: new fields.StringField({ initial: "" }),
+      protection: new fields.NumberField({ initial: 0, integer: true }),
+      cost: new fields.StringField({ initial: "" }),
+      equipped: new fields.BooleanField({ initial: false })
+    };
+  }
+}
+
+class EquipmentData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      description: new fields.StringField({ initial: "" }),
+      quantity: new fields.NumberField({ initial: 1, integer: true }),
+      cost: new fields.StringField({ initial: "" }),
+      equipped: new fields.BooleanField({ initial: false })
+    };
+  }
+}
+
+class CombatMoveData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      description: new fields.StringField({ initial: "" }),
+      level: new fields.StringField({ initial: "2" })
+    };
+  }
+}
+
+class SpellData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      description: new fields.StringField({ initial: "" }),
+      range: new fields.StringField({ initial: "" })
+    };
+  }
+}
+
+class NpcAbilityData extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    return {
+      description: new fields.StringField({ initial: "" })
+    };
+  }
+}
+
+// ===== Initialization =====
+
 Hooks.once("init", async function() {
   console.log("Barbaric! 2e | Initializing system");
+
+  // Register data models
+  CONFIG.Actor.dataModels = {
+    character: CharacterData,
+    npc: NpcData
+  };
+  CONFIG.Item.dataModels = {
+    archetype: ArchetypeData,
+    weapon: WeaponData,
+    armor: ArmorData,
+    equipment: EquipmentData,
+    combatMove: CombatMoveData,
+    spell: SpellData,
+    npcAbility: NpcAbilityData
+  };
 
   // Configure combat initiative - 2d6 + Combat skill
   CONFIG.Combat.initiative = {
@@ -360,13 +518,13 @@ class Barbaric2eActorSheet extends ActorSheet {
       const lvl = parseInt(m.system.level) || 2;
       if (context.combatMoves[lvl]) context.combatMoves[lvl].push(m);
     });
-    
+
     // Skill icons
     context.skillIcons = {
-      combat: "fa-fist-raised",
+      combat: "fa-hand-fist",
       craft: "fa-hammer",
       lore: "fa-book",
-      physical: "fa-running",
+      physical: "fa-person-running",
       social: "fa-comments",
       stealth: "fa-eye-slash"
     };
@@ -1063,34 +1221,34 @@ class Barbaric2eNPCSheet extends ActorSheet {
     
     // Skill icons
     context.skillIcons = {
-      combat: "fa-fist-raised",
+      combat: "fa-hand-fist",
       craft: "fa-hammer",
       lore: "fa-book",
-      physical: "fa-running",
+      physical: "fa-person-running",
       social: "fa-comments",
       stealth: "fa-eye-slash"
     };
-    
+
     return context;
   }
 
   activateListeners(html) {
     super.activateListeners(html);
-    
+
     if (!this.isEditable) return;
-    
+
     // Roll skills
     html.find(".roll-skill").click(this._onRollSkill.bind(this));
-    
+
     // Roll attack
     html.find(".roll-attack").click(this._onRollAttack.bind(this));
-    
+
     // Roll damage
     html.find(".roll-damage").click(this._onRollDamage.bind(this));
-    
+
     // Roll weapon (combined attack + damage)
     html.find(".roll-weapon").click(this._onRollWeapon.bind(this));
-    
+
     // Item controls
     html.find(".item-create").click(this._onItemCreate.bind(this));
     html.find(".item-delete").click(this._onItemDelete.bind(this));

@@ -569,11 +569,11 @@
 }
 
 /* Equip button states */
-.barbaric2e .item-equip .fa-shield-alt {
+.barbaric2e .item-equip .fa-shield-halved {
   opacity: 0.4;
 }
 
-.barbaric2e .item-equip .fa-shield-alt.equipped {
+.barbaric2e .item-equip .fa-shield-halved.equipped {
   opacity: 1;
   color: var(--gold);
 }

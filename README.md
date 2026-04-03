@@ -1,6 +1,6 @@
 # Barbaric! 2e - Foundry VTT System
 
-A sword and sorcery 2d6-based tabletop RPG system for Foundry VTT v13.
+A sword and sorcery 2d6-based tabletop RPG system for Foundry VTT v13+.
 
 ## Features
 

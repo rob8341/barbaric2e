@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0] - Foundry VTT v14 Compatibility
+
+### Changed
+- Updated compatibility to Foundry VTT v14 (minimum v13, verified v14)
+- Updated Font Awesome icons from FA5 to FA6 names:
+  - Combat skill: `fa-fist-raised` → `fa-hand-fist`
+  - Physical skill: `fa-running` → `fa-person-running`
+  - Equipment tab: `fa-shield-alt` → `fa-shield-halved`
+  - Sorcery tab: `fa-magic` → `fa-wand-magic-sparkles`
+  - Triage button: `fa-medkit` → `fa-kit-medical`
+
+---
+
 ## [1.0.0] - Initial Release
 
 ### Character Sheet
@@ -73,7 +86,7 @@
 - Styled dice roll results in chat
 
 ### Technical
-- Foundry VTT v13 compatible
+- Foundry VTT v13 compatible (see v1.2.0 for v14 support)
 - V1 Application framework
 - GitHub-compatible system.json
 - English localization included
